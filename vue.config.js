@@ -27,7 +27,7 @@ module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  lintOnSave: process.env.NODE_ENV === 'developmentfalse',
   productionSourceMap: false,
   devServer: {
     port: port,
@@ -36,7 +36,15 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy:{
+      '/dev-api':{
+        target:"http://127.0.0.1",
+        pathRewrite:{
+          "^/dev-api":""
+        }
+      }
+    }
+    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
