@@ -30,6 +30,8 @@ import Layout from '@/layout'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+
+
 export const constantRoutes = [
   {
     path: '/login',
@@ -49,17 +51,79 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '后台管理',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    children: [
+      {
+        path: 'index12123',
+        name: 'users',
+        component: () => import('@/views/form/index'),
+        meta: { title: '用户管理', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/templet',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'templets',
+        component: () => import('@/views/form/index'),
+        meta: { title: '模板管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'order',
+        component: () => import('@/views/form/index'),
+        meta: { title: '订单管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/article',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'article',
+        component: () => import('@/views/form/index'),
+        meta: { title: '文章管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'form',
+        component: () => import('@/views/form/index'),
+        meta: { title: '表单', icon: 'form' }
+      }
+    ]
   },
 
   {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
-    name: 'Example',
+    name: '例子',
     meta: { title: 'Example', icon: 'el-icon-s-help' },
     children: [
       {
@@ -72,31 +136,17 @@ export const constantRoutes = [
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: '树', icon: 'tree' }
       }
     ]
   },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
   {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '嵌套',
       icon: 'nested'
     },
     children: [
@@ -155,7 +205,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: '扩展链接', icon: 'link' }
       }
     ]
   },
@@ -163,6 +213,7 @@ export const constantRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
